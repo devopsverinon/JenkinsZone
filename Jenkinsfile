@@ -6,7 +6,7 @@ pipeline {
         stage('git clone'){
             
             steps{
-                git 'https://github.com/shivaramakrishna1/spring-petclinic.git'
+                git 'https://github.com/githubu.name/reponame'
             }
         }
         
