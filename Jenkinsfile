@@ -21,12 +21,12 @@ pipeline {
 	
         stage('sonar analysis'){
 		
-	 steps{
+	    steps{
 	        withSonarQubeEnv('sonar') {
                 sh 'mvn sonar:sonar'
               }
 	   }
-       }
+        }
 		
         
         stage('copy war to petwar dir'){
