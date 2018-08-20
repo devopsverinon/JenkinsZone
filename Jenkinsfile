@@ -13,9 +13,21 @@ pipeline {
         stage('Build'){
             
             steps{
-                sh 'mvn clean install'
+                sh 'mvn package'
+				
             }
+		
         }
+		
+		stage('sonar analysis'){
+		
+		    steps{
+		        withSonarQubeEnv('sonar') {
+                  sh 'mvn sonar:sonar'
+        }
+		    }
+		}
+		
         
         stage('copy war to petwar dir'){
             
@@ -37,6 +49,7 @@ pipeline {
                 junit 'target/surefire-reports/*.xml'
             }
         }
+		
         
         stage('jfrog'){
             
