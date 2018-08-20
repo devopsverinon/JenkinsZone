@@ -18,15 +18,15 @@ pipeline {
             }
 		
         }
+	
+        stage('sonar analysis'){
 		
-		stage('sonar analysis'){
-		
-		    steps{
-		        withSonarQubeEnv('sonar') {
-                  sh 'mvn sonar:sonar'
-        }
-		    }
-		}
+	 steps{
+	        withSonarQubeEnv('sonar') {
+                sh 'mvn sonar:sonar'
+              }
+	   }
+       }
 		
         
         stage('copy war to petwar dir'){
